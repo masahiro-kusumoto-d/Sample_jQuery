@@ -1,3 +1,5 @@
+'use strict'
+
 class CoordManager {
     static fetchPresentCoords() {
         return new Promise((resolve, reject) => {
@@ -16,7 +18,6 @@ class CoordManager {
             } else {
                 /// .....。。。。。
                 reject('このブラウザではGeolocationの使用はできません');
-                console.log('このブラウザではGeolocationの使用はできません');
             }
         })
     }
