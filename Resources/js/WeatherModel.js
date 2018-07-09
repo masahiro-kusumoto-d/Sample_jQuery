@@ -1,7 +1,9 @@
+'use strict'
+
 class WeatherModel {
-    constructor(json) {
+    fillInDataWithJson(json) {
         this.weathers = [];
-        for(let i in json.weather) {
+        for (let i in json.weather) {
             this.weathers.push(new WeatherDetailModel(json.weather[i]));
         }
         this.coord = new WeatherCoordModel(json.coord);
