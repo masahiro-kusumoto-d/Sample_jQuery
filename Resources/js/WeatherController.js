@@ -2,30 +2,15 @@
 
 class WeatherController {
     constructor(weatherModel, weatherView) {
-        const self = this;
         this.weatherModel = weatherModel
         this.weatherView = weatherView
-        
-        this.fetchPresentCoords()
-        .then(function(coords) {
-            self.fetchWeatherWithCoords(coords);
-        })
-        .catch(function(err) {
-            console.log(err);
-        })
+
+        this.configureWeather();
     }
 
-    fetchPresentCoords() {
-        return new Promise((resolve, reject) => {
-            CoordManager.fetchPresentCoords()
-            .then(function(coords) {
-                console.log(coords);
-                resolve(coords);
-            })
-            .catch(function(err) {
-                reject(err);
-            })
-        })
+    async configureWeather() {
+        const coords = await CoordManager.fetchPresentCoords();
+        this.fetchWeatherWithCoords(coords);
     }
 
     fetchWeatherWithCoords(coords) {
